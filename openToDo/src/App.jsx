@@ -4,7 +4,9 @@ import './App.css'
 
 function App() {
   const [frases, setFrases] = useState([])
+  const [isLogin, setIsLogin] = useState(false)
   const [user,setUser] = useState("Bienvenido Usuario")
+  const [desc,setDesc] = useState("")
   useEffect(()=>{
     const  fetchFrases = async ()=>{
         const res = await fetch('./frases_motivacionales.json');
@@ -14,12 +16,11 @@ function App() {
     fetchFrases();
     
   },[])
-  //const component ? <Login></Login> : <ToDoManager/>
-  
   return (
-    <>
-      <Login setUser={setUser} user={user}/>
-    </>
+    <div>
+      {isLogin ? (<h1> Hello </h1> ) : (<Login user={user} desc={desc} setUser={setUser} setDesc={setDesc} setIsLogin={setIsLogin}></Login>)}
+    </div>
+    
   )
 }
 
