@@ -1,24 +1,19 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Login from './components/Login'
+import MainContent from './components/MainContent'
 import './App.css'
 
 function App() {
-  const [frases, setFrases] = useState([])
-  const [isLogin, setIsLogin] = useState(false)
-  const [user,setUser] = useState("Bienvenido Usuario")
-  const [desc,setDesc] = useState("")
-  useEffect(()=>{
-    const  fetchFrases = async ()=>{
-        const res = await fetch('./frases_motivacionales.json');
-        const data = await res.json();
-        setFrases(data)
-    }
-    fetchFrases();
-    
-  },[])
+  const [isLogin, setIsLogin] = useState(true);
+  const [userData, setUserData] = useState({
+    name:'Bienvenido Usuario',
+    description : `I'm from  and I live in . Currently I'm . I love creating beautiful software that delights users and reimagines the way we interact with technology.`,
+    urlImg: ''
+  });
+
   return (
-    <div>
-      {isLogin ? (<h1> Hello </h1> ) : (<Login user={user} desc={desc} setUser={setUser} setDesc={setDesc} setIsLogin={setIsLogin}></Login>)}
+    <div className='flex justify-center items-center h-screen w-screen'>
+      {isLogin ? (<MainContent userData={userData}  />) : (<Login userData={userData}  setUserData={setUserData} setIsLogin={setIsLogin}></Login>)}
     </div>
     
   )
