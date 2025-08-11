@@ -17,7 +17,7 @@ const CardInfo = ({userData}) => {
     },[])
   return (
     <div className='bg-gradient-to-tl from-gray-800 to-gray-700 p-4 rounded flex border-1 border-gray-500 gap-4  '>
-        <img src="https://avatars.githubusercontent.com/u/107158851?v=4" alt="imagen de perfil" className='rounded-full mr-1.5' width={'100px'} />
+        <img src={userData.urlImg} alt="imagen de perfil" className='rounded-full mr-1.5' width={'100px'} />
         <div>
             {motiMode ? 
             <>
@@ -32,7 +32,7 @@ const CardInfo = ({userData}) => {
             </>}
         </div>
         <div >
-            <button className="border-1 p-1 rounded cursor-pointer text-sm" onClick={()=>setMotiMode(!motiMode)}>📖</button>
+            <button className="border-1 p-1 rounded cursor-pointer text-sm flex items-center" onClick={()=>setMotiMode(!motiMode)}>📖</button>
         </div>
     </div>
   )
