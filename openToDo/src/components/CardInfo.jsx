@@ -2,13 +2,10 @@ import { useState,useEffect } from "react"
 import React from 'react'
 
 
-const CardInfo = () => {
-    const [motiMode,setMotiMode] = useState(false);
+const CardInfo = ({userData}) => {
+    const [isMotiMode,setMotiMode] = useState(false);
     const [frases,setFrases] = useState([]);
-    //obtener datos guardados del usuario en el localStorage
-        const storedUserData = localStorage.getItem('user')
-        console.log(storedUserData);
-        
+    
     //fetch a frases
     useEffect(()=>{
         const  fetchFrases = async ()=>{
@@ -19,23 +16,14 @@ const CardInfo = () => {
         fetchFrases();
     },[])
   return (
-    <div className='bg-gradient-to-tl from-gray-800 to-gray-700 p-4 rounded flex border-1 border-gray-500 gap-4  '>
-        <img src="" alt="imagen de perfil" className='rounded-full mr-1.5' width={'100px'} />
+    <div className='bg-gradient-to-tl from-gray-800 to-gray-700 px-2 py-3 rounded flex items-center border-1 border-gray-500 gap-2  '>
+        <img src={userData.urlImg} alt="imagen de perfil" className='rounded-full mr-1.5 w-[50px] h-[50px]' />
         <div>
-            {motiMode ? 
-            <>
-                {
-                    
-                }
-            </>
-            : 
-            <>
-                <h2 className="font-bold text-3xl" ></h2>
-                <p  className="text-gray-300 text-1xl"></p>
-            </>}
-        </div>
-        <div >
-            <button className="border-1 p-1 rounded cursor-pointer text-sm flex items-center" onClick={()=>setMotiMode(!motiMode)}>📖</button>
+            <div className="flex justify-between">
+                <h2 className="font-bold text-1xl" >{userData.name + userData.icon}</h2>
+                <button className="text-md cursor-pointer" onClick={()=>setMotiMode(!isMotiMode)}>{isMotiMode ? "🙋" : "🔥"}</button>
+            </div>
+            <p  className="text-gray-300 text-sm">{userData.description}</p>
         </div>
     </div>
   )

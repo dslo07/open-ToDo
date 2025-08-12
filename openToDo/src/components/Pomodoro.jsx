@@ -21,10 +21,14 @@ const Pomodoro = () => {
   },[state,second])
 
   return (
-    <div className='flex justify-center items-center  flex-col gap-4'>
+    <div className=' flex justify-center items-center flex-col gap-4 '>
         <h2 className='text-8xl'>{minute}:{second < 10 ? "0"+ second : second}</h2>
         <div>
-            <button className='bg-gray-800 p-1 rounded cursor-pointer text-3xl px-3' onClick={()=>{setState(!state)}}> {state ? "Pause" : "Start"} Pomodoro</button>
+            <button className="border py-1 px-2 rounded cursor-pointer text-6l flex items-center hover:bg-gray-100 hover:text-gray-900" onClick={()=>{setState(!state)}}> {state ? "Pause" : "Start"} Pomodoro</button>
+        </div>
+        <div className='flex gap-3'>
+          <button className="border py-1 px-2 rounded cursor-pointer text- flex items-center  hover:bg-gray-100 hover:text-gray-900">Change Time</button>
+          <button className="border py-1 px-2 rounded cursor-pointer text-sm flex items-center hover:bg-gray-100 hover:text-gray-900">Rest Time</button>
         </div>
     </div>
   )

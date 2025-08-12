@@ -8,11 +8,11 @@ const Login = ({ setUserData, setIsLogin }) => {
   const [city, setCity] = useState('');
   const [icon, setIcon] = useState('👨‍💻');
   const [userImg, setUserImg] = useState('https://avatars.githubusercontent.com/u/107158851?v=4');
-  const [userDesc, SetUserDesc] = useState(`I'm from  ${country} and I live in ${city}. Currently I'm ${carrier} . I love creating beautiful software that delights users and reimagines the way we interact with technology.`);
+  const [userDesc, SetUserDesc] = useState(`I'm from  ${country} and I live in ${city}. Currently I am ${carrier} . I love creating beautiful software that delights users and reimagines the way we interact with technology.`);
   
     // validacion de datos 
     useEffect(() => {
-      SetUserDesc(`I'm from ${country} and I live in ${city}. Currently I'm ${carrier}. I love creating beautiful software that delights users and reimagines the way we interact with technology.`);
+      SetUserDesc(`I'm from ${country} and I live in ${city}. Currently I am ${carrier} and I love creating beautiful software that delights users and reimagines the way we interact with technology.`);
     }, [country, city, carrier])
     //confirmar Datos
     const submitForm = (e) =>{
