@@ -13,8 +13,8 @@ function App() {
   });
 
   return (
-    <div className='flex justify-center items-center  '>
-      {isLogin ? (<MainContent userData={userData}  />) : (<Login setUserData={setUserData} setIsLogin={setIsLogin}></Login>)}
+    <div className='flex justify-center items-center'>
+      {isLogin ? (<MainContent/>) : (<Login setUserData={setUserData} setIsLogin={setIsLogin}></Login>)}
     </div>
     
   )
