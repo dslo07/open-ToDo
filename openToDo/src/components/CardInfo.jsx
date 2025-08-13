@@ -21,7 +21,7 @@ const CardInfo = ({userData}) => {
         <div>
             <div className="flex justify-between">
                 <h2 className="font-bold text-1xl" >{userData.name + userData.icon}</h2>
-                <button className="text-md cursor-pointer" onClick={()=>setMotiMode(!isMotiMode)}>{isMotiMode ? "🙋" : "🔥"}</button>
+                <button className="text-md cursor-pointer transition-transform transform hover:scale-110 hover:shadow-lg" onClick={()=>setMotiMode(!isMotiMode)}>{isMotiMode ? "🙋" : "🔥"}</button>
             </div>
             <p  className="text-gray-300 text-sm">{userData.description}</p>
         </div>

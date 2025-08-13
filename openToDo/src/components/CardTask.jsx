@@ -1,37 +1,40 @@
 import React from 'react'
 
-const CardTask = ({ task }) => {
-
+const   CardTask = ({ task }) => {
+  console.log(task);
   
-
   const setPriority= (priority)=>{
-    const priorityClass = '';
-    const priorityHight = 'red';
-    const priorityMid   = 'yellow';
-    const prioritylow   = 'Green';
+    const baseClasses = 'text-sm border-1 py-1 px-2 rounded';
 
-    if(priority === 'high'){
-        
-    }else if( priority === 'mid'){
-
-    }else if( priority === 'low'){
-
+    switch (priority) {
+      case 'High':
+        return `${baseClasses} border-red-800 bg-red-300 text-red-900`;
+      case 'Mid':
+        return `${baseClasses} border-yellow-800 bg-yellow-300 text-yellow-900`;
+      case 'Low':
+        return `${baseClasses} border-green-800 bg-green-300 text-green-900`;
+      default:
+        return `${baseClasses} border-gray-500 bg-gray-300 text-gray-900`;
     }
-    return priorityClass
   }
 
     //setPriority(task.priority)
     return (
-    <div id={task.id} className='bg-gradient-to-tl from-gray-800 to-gray-600 p-3' >
+    <div id={task.id} className='bg-gray-900 p-3 rounded-lg border-[1px] h-[170px] w-[330px] border-gray-500 transition-transform transform hover:scale-102 hover:shadow-lg ' >
+      <div>
         <div className='flex justify-between '>
-            <span className='text-sm border-[2px] py-1 px-2 rounded border-green-800 bg-green-600'>{
-           String.toString( task.priority)}</span>
-            <span className='text-sm border-[1px] border-gray-900 bg-gray-600'>{task.expiration}</span>
+            <span className={setPriority(task.priority)}>{task.priority}</span>
+            <span className='text-sm border-[1px] py-1 px-2 rounded border-gray-400 bg-gray-600'>{task.expiration === "" ? "No-Expiration" : task.expiration  }</span>
         </div>
         <div >
-            <h3 className='text-center'>{task.name}</h3>
-            <p>{task.description}</p>
+            <h2 className='text-center font-semibold my-1 text-1xl '>{task.name}</h2>
+            <p className='pb-2 leading-[17px] text-sm text-gray-400'>{task.description}</p>
         </div>
+      </div>
+      <div className='flex  gap-2 '>
+        <button className="border w-70 justify-center font-semibold py-1 px-2 rounded cursor-pointer text-sm flex items-center hover:bg-gray-100 hover:text-gray-900">Ready</button>
+        <button className="border  font-semibold py-1 px-2 rounded cursor-pointer text-sm flex items-center hover:bg-gray-100 hover:text-gray-900">Edit</button>
+      </div>
     </div>
   )
 }

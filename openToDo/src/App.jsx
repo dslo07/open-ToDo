@@ -22,9 +22,9 @@ function App() {
     }
   },[])
   return (
-    <div >
+    <>
       {isLogin ? (<MainContent userData={user}/>) : (<Login setUserData={setUserData} setIsLogin={setIsLogin}></Login>)}
-    </div>
+    </>
   )
 }
 

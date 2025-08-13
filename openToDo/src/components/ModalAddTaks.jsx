@@ -8,25 +8,35 @@ export default function ModalAddTask({ open, taskList, setOpen, setTaskList}) {
   const [taskDescription,setTaskDescription] = useState("");
 
 const addTaskList = () => {
-  
-  const newTask = {
-    name: taskName,
-    priority: taskPriority,
-    expiration: taskExpiration,
-    description: taskDescription,
-    id: Date.now()
-  };
+  if(taskName.length < 80 && taskName !== ""){
+    if (taskDescription.length <= 100) {
+      if (taskPriority != "") {
+        const newTask = {
+          name: taskName,
+          priority: taskPriority,
+          expiration: taskExpiration,
+          description: taskDescription,
+          id: Date.now()
+        };
+          //
+          setTaskList(prev => [...prev, newTask]);
+          //limpiar el formulario 
+          setTaskName('');
+          setTaskPriority('');
+          setTaskExpiration('');
+          setTaskDescription('');
 
-  //
-  setTaskList(prev => [...prev, newTask]);
-  //limpiar el formulario 
-  setTaskName('');
-  setTaskPriority('');
-  setTaskExpiration('');
-  setTaskDescription('');
-
-  // Cerrar modal
-  setOpen(false);  
+          // Cerrar modal
+          setOpen(false);  
+      }else{
+        alert("You need set the priority  ");
+      }
+    }else{
+    alert("the description must be lower than 100 character");
+    }
+  }else{
+    alert("the title must be lower than 60 character");
+  }
 };
 
 
@@ -59,24 +69,24 @@ const addTaskList = () => {
                       <form  className='mt-3'>
                         <div className='mb-2'>
                           <label htmlFor="titleTask" className='block text-md mb-1'>Task Name:</label>
-                          <input type="text" id="taskName" placeholder='Ej: Learn SOLID with JS' className='w-full  bg-gray-900 p-1 px-3 rounded' onChange={(e)=>{setTaskName(e.target.value)}}/>
+                          <input type="text" id="taskName" placeholder='Ej: Learn SOLID with JS' className='w-full  bg-gray-900 p-1 px-3 rounded' onChange={(e)=>{setTaskName(e.target.value.trim())}}/>
                         </div>
                         <div>
                           <label htmlFor="categoryTask" className='block text-md mb-1'>Priority:</label>
                           <select name="priority" id="sltPriority" onChange={(e)=>{setTaskPriority(e.target.value)}} className='w-full bg-gray-900 p-1 px-3 rounded'>
                             <option value="">Select Priority</option>
-                            <option value="high">High</option>
-                            <option value="mid">Mid</option>
-                            <option value="low">Low</option>
+                            <option value="High">High</option>
+                            <option value="Mid">Mid</option>
+                            <option value="Low">Low</option>
                           </select>
                         </div>
                         <div className='mb-2'>
                           <label htmlFor="Expiration" className='block text-md mb-1' >Expiration time:</label>
                           <input type="date" onChange={(e)=>{setTaskExpiration(e.target.value)}} className='w-full  bg-gray-900 p-1 px-3 rounded'/>
-                        </div>
+                        </div>  
                         <div className='mb-2'>
                           <label htmlFor="Expiration" className='block text-md mb-1' >Description:</label>
-                          <textarea onChange={(e)=>{setTaskDescription(e.target.value)}} className='w-full max-h-[100px] bg-gray-900 p-1 px-3 rounded'/>
+                          <textarea onChange={(e)=>{setTaskDescription(e.target.value).trim()}} className='w-full max-h-[100px] bg-gray-900 p-1 px-3 rounded'/>
                         </div>
                       </form>
                     </div>
