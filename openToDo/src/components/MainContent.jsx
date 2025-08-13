@@ -45,12 +45,10 @@ const MainContent = ({userData}) => {
       <button onClick={() => setOpen(true)} className="border  font-semibold py-1 px-2 rounded cursor-pointer text-sm flex items-center hover:bg-gray-100 hover:text-gray-900">Create New Task</button>
     </div> 
     {/*Mapeo de las tareas*/}
-    <div>
       {taskList.length <= 0 
         ? <NoContent />
         : taskList.map(task => <CardTask key={task.id} task={task} />)
       }
-    </div>
   </div>
     <ModalAddTask open={open} setOpen={setOpen} taskList={taskList} setTaskList={setTaskList}/>
 </section>
