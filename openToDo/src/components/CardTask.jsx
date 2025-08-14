@@ -1,7 +1,6 @@
 import React from 'react'
 
 const   CardTask = ({ task }) => {
-  console.log(task);
   
   const setPriority= (priority)=>{
     const baseClasses = 'text-sm border-1 py-1 px-2 rounded';
@@ -12,9 +11,9 @@ const   CardTask = ({ task }) => {
       case 'Mid':
         return `${baseClasses} border-yellow-800 bg-yellow-300 text-yellow-900`;
       case 'Low':
+        return `${baseClasses} border-blue-800 bg-blue-300 text-green-900`;
+      case 'Ready':
         return `${baseClasses} border-green-800 bg-green-300 text-green-900`;
-      default:
-        return `${baseClasses} border-gray-500 bg-gray-300 text-gray-900`;
     }
   }
 

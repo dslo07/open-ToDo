@@ -25,7 +25,6 @@ const addTaskList = () => {
           setTaskPriority('');
           setTaskExpiration('');
           setTaskDescription('');
-
           // Cerrar modal
           setOpen(false);  
       }else{
@@ -69,7 +68,7 @@ const addTaskList = () => {
                       <form  className='mt-3'>
                         <div className='mb-2'>
                           <label htmlFor="titleTask" className='block text-md mb-1'>Task Name:</label>
-                          <input type="text" id="taskName" placeholder='Ej: Learn SOLID with JS' className='w-full  bg-gray-900 p-1 px-3 rounded' onChange={(e)=>{setTaskName(e.target.value.trim())}}/>
+                          <input type="text" id="taskName" placeholder='Max 80 character.' className='w-full  bg-gray-900 p-1 px-3 rounded' onChange={(e)=>{setTaskName(e.target.value.trim())}}/>
                         </div>
                         <div>
                           <label htmlFor="categoryTask" className='block text-md mb-1'>Priority:</label>
@@ -86,7 +85,7 @@ const addTaskList = () => {
                         </div>  
                         <div className='mb-2'>
                           <label htmlFor="Expiration" className='block text-md mb-1' >Description:</label>
-                          <textarea onChange={(e)=>{setTaskDescription(e.target.value).trim()}} className='w-full max-h-[100px] bg-gray-900 p-1 px-3 rounded'/>
+                          <textarea onChange={(e)=>{setTaskDescription(e.target.value.trim())}} placeholder='Max 100 character.' className='w-full max-h-[100px] bg-gray-900 p-1 px-3 rounded'/>
                         </div>
                       </form>
                     </div>
