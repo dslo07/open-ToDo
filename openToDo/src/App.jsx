@@ -24,6 +24,18 @@ function App() {
   return (
     <>
       {isLogin ? (<MainContent userData={user}/>) : (<Login setUserData={setUserData} setIsLogin={setIsLogin}></Login>)}
+      
+        <div className='bg-gray-500 h-full sm:hidden flex justify-between'>
+          <button>
+            Pomodoro
+          </button>
+          <button>
+            add
+          </button>
+          <button>
+            Task
+          </button>
+        </div>
     </>
   )
 }

@@ -1,10 +1,21 @@
 import { useEffect, useState, useRef } from 'react';
+import CardTask from './CardTask';
 
 const Pomodoro = () => {
   const [timeLeft, setTimeLeft] = useState(25 * 60); // 25 minutos
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef(null);
 
+        const task = {
+          name: "nombre de prueba",
+          priority: "High",
+          expiration: "25-08-2025",
+          description: "tarea de",
+          id: Date.now()
+        };
+
+
+  
   // Formatear minutos y segundos
   const formatTime = () => {
     const minutes = Math.floor(timeLeft / 60);
@@ -39,25 +50,25 @@ const Pomodoro = () => {
   };
 
   return (
-    <div className="flex justify-center items-center flex-col gap-4">
-      <h2 className="text-8xl">{formatTime()}</h2>
-
+    <div className='text-center p-2'>
+      <h2 className="text-5xl">{formatTime()}</h2>
+    <div className="flex justify-center items-center flex-col gap-4 mb-3">
       <div>
         <button
           className="border py-1 px-4 rounded text-xl font-semibold hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
           onClick={handleStartPause}
         >
-          {isRunning ? 'Pause' : 'Start'} Time
+          {isRunning ? 'Pause' : 'Start'} 
         </button>
       </div>
 
       <div className="flex gap-3">
-        <button className="border py-1 px-4 rounded hover:bg-gray-100 hover:text-gray-900 cursor-pointer"onClick={() => handleReset(25)}>
-          Restart Time (25 min)
+        <button className="border text-md py-1 px-4 rounded hover:bg-gray-100 hover:text-gray-900 cursor-pointer"onClick={() => handleReset(25)}>
+          Restart
         </button>
 
         <button className="border py-1 px-4 rounded hover:bg-gray-100 hover:text-gray-900 cursor-pointer" onClick={() => handleReset(5)}>
-          Rest Time (5 min)
+          Rest  
         </button>
       </div>
 
@@ -70,6 +81,8 @@ const Pomodoro = () => {
           <p className="my-1 ml-2">Pomodoro finished at {new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</p>
         </div>
       )}
+    </div>
+       <CardTask task= {task} /> 
     </div>
   );
 };

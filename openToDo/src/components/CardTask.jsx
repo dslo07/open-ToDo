@@ -19,7 +19,7 @@ const   CardTask = ({ task }) => {
 
     //setPriority(task.priority)
     return (
-    <div id={task.id} className='bg-gray-900 p-3 flex flex-col justify-between rounded-lg border-[1px] h-[170px] w-[330px] border-gray-500 transition-transform transform hover:scale-102 hover:shadow-lg ' >
+    <div  className='bg-gray-900 p-3 flex flex-col justify-between rounded-lg border-[1px] h-[170px]  border-gray-500 transition-transform transform hover:scale-102 hover:shadow-lg ' >
       <div>
           <div className='flex justify-between '>
               <span className={setPriority(task.priority)}>{task.priority}</span>
