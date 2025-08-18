@@ -19,7 +19,7 @@ const   CardTask = ({ task }) => {
 
     //setPriority(task.priority)
     return (
-    <div  className='bg-gray-900 p-3 flex flex-col justify-between rounded-lg border-[1px] h-[170px]  border-gray-500 transition-transform transform hover:scale-102 hover:shadow-lg ' >
+    <div  className='bg-gray-900 p-3 flex flex-col justify-between rounded-lg border-[1px]  border-gray-500 transition-transform transform hover:scale-102 hover:shadow-lg ' >
       <div>
           <div className='flex justify-between '>
               <span className={setPriority(task.priority)}>{task.priority}</span>
@@ -31,7 +31,7 @@ const   CardTask = ({ task }) => {
           </div>
       </div>
       <div className='flex mt-full gap-2 '>
-          <button className="border w-70 justify-center font-semibold py-1 px-2 rounded cursor-pointer text-sm flex items-center hover:bg-gray-100 hover:text-gray-900">Ready</button>
+          <button className="border w-60 justify-center font-semibold py-1 px-2 rounded cursor-pointer text-sm flex items-center hover:bg-gray-100 hover:text-gray-900">Ready</button>
           <button className="border  font-semibold py-1 px-2 rounded cursor-pointer text-sm flex items-center hover:bg-gray-100 hover:text-gray-900">Edit</button>
       </div>
     </div>

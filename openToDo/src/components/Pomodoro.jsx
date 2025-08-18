@@ -50,25 +50,19 @@ const Pomodoro = () => {
   };
 
   return (
-    <div className='text-center p-2'>
-      <h2 className="text-5xl">{formatTime()}</h2>
-    <div className="flex justify-center items-center flex-col gap-4 mb-3">
+    <div className='text-center'>
+      <h2 className="text-7xl">{formatTime()}</h2>
+    <div className="flex justify-center items-center flex-col gap-4">
       <div>
-        <button
-          className="border py-1 px-4 rounded text-xl font-semibold hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
-          onClick={handleStartPause}
-        >
-          {isRunning ? 'Pause' : 'Start'} 
-        </button>
+
       </div>
 
       <div className="flex gap-3">
+        <button className="border py-1 px-4 rounded text-xl font-semibold hover:bg-gray-100 hover:text-gray-900 cursor-pointer" onClick={handleStartPause}>
+          {isRunning ? 'Pause' : 'Start'} 
+        </button>
         <button className="border text-md py-1 px-4 rounded hover:bg-gray-100 hover:text-gray-900 cursor-pointer"onClick={() => handleReset(25)}>
           Restart
-        </button>
-
-        <button className="border py-1 px-4 rounded hover:bg-gray-100 hover:text-gray-900 cursor-pointer" onClick={() => handleReset(5)}>
-          Rest  
         </button>
       </div>
 
@@ -82,7 +76,9 @@ const Pomodoro = () => {
         </div>
       )}
     </div>
+    <div className='px-2 my-3'>
        <CardTask task= {task} /> 
+    </div>
     </div>
   );
 };
