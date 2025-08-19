@@ -4,7 +4,7 @@ import { IoIosAddCircleOutline } from "react-icons/io";
 import { CgProfile } from "react-icons/cg";
 import { IoLibrary } from "react-icons/io5";
 
-const FabMenu = () => {
+const FabMenu = ({setOpen}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -17,7 +17,7 @@ const FabMenu = () => {
           <button className="p-3 rounded-full bg-white flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer" size={30}>
             <CgProfile className="text-blue-600" />
           </button>
-          <button className="p-3 rounded-full bg-white flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer">
+          <button onClick={()=>setOpen(true)}  aria-label="Open profile"  className="p-3 rounded-full bg-white flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer">
             <IoIosAddCircleOutline className="text-green-700" />
           </button>
           <button className="p-3 rounded-full sm:hidden bg-white flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer">

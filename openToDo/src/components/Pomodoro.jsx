@@ -1,18 +1,17 @@
 import { useEffect, useState, useRef } from 'react';
 import CardTask from './CardTask';
 
-const Pomodoro = () => {
+const Pomodoro = ( { associated = null } ) => {
   const [timeLeft, setTimeLeft] = useState(25 * 60); // 25 minutos
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef(null);
-
-        const task = {
-          name: "nombre de prueba",
-          priority: "High",
-          expiration: "25-08-2025",
-          description: "tarea de",
-          id: Date.now()
-        };
+        // const task = {
+        //   name: "nombre de prueba",
+        //   priority: "High",
+        //   expiration: "25-08-2025",
+        //   description: "tarea de",
+        //   id: Date.now()
+        // };
 
 
   
@@ -51,13 +50,13 @@ const Pomodoro = () => {
 
   return (
     <div className='text-center'>
-      <h2 className="text-7xl">{formatTime()}</h2>
+      <h2 className="text-7xl m-3">{formatTime()}</h2>
         <div className="flex justify-center items-center flex-col gap-4">
           <div className="flex gap-3">
             <button className="border py-1 px-4 rounded text-xl font-semibold hover:bg-gray-100 hover:text-gray-900 cursor-pointer" onClick={handleStartPause}>
               {isRunning ? 'Pause' : 'Start'} 
             </button>
-            <button className="border text-md py-1 px-4 rounded hover:bg-gray-100 hover:text-gray-900 cursor-pointer"onClick={() => handleReset(25)}>
+            <button className="border text-md py-1 px-4 rounded font-semibold hover:bg-gray-100 hover:text-gray-900 cursor-pointer"onClick={() => handleReset(25)}>
               Restart
             </button>
           </div>
@@ -72,7 +71,13 @@ const Pomodoro = () => {
               </div>
             )}
         </div>
+            <div className='mt-3 px-3'>
+              {
+                associated  && associated.name != null ? <CardTask task={associated} message={"Mark As Ready"}/> : "No task associated yet"
+              }
 
+              
+            </div>
     </div>
   );
 };
