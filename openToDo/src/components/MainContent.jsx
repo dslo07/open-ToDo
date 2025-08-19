@@ -4,6 +4,7 @@ import Pomodoro from './Pomodoro';
 import InfoMode from './InfoMode';
 import ModalAddTask from './ModalAddTaks';
 import NoContent from './NoContent';
+import FabMenu from './FabMenu'
 import TaskManager from './TaskManager';
 
 const MainContent = ({ userData }) => {
@@ -28,7 +29,7 @@ const MainContent = ({ userData }) => {
     <section className="flex justify-between p-4 min-h-[450px] sm:gap-3 bg-gray-950 border border-gray-500 m-2">
       
       {/* lado izquierdo */}
-      <div className="max-w-[500px] flex flex-col gap-4">
+      <div className="max-w-[500px] ">
         <CardInfo userData={userData} />
 
         <div className="rounded border border-gray-500 bg-gradient-to-tl from-gray-800 to-gray-700">
@@ -41,7 +42,7 @@ const MainContent = ({ userData }) => {
           </div>
 
 
-          <div >
+          <div className='h-full'>
             { isPomodoro ? <Pomodoro /> : <InfoMode  /> }
           </div>
         </div>
@@ -89,6 +90,7 @@ const MainContent = ({ userData }) => {
           : <TaskManager taskList={taskList} />
         }
       </div>
+      <FabMenu/>
       {/* modal */}
       <ModalAddTask open={open} setOpen={setOpen} taskList={taskList} setTaskList={setTaskList}/>
     </section>

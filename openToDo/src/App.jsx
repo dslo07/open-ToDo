@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react'
 import Login from './components/Login'
 import MainContent from './components/MainContent'
-import FabMenu from './components/FabMenu'
 import './App.css'
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
   return (
     <>
       {isLogin ? (<MainContent userData={user}/>) : (<Login setUserData={setUserData} setIsLogin={setIsLogin}></Login>)}
-      <FabMenu/>
     </>
   )
 }
