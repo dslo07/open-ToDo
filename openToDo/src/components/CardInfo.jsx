@@ -16,8 +16,8 @@ const CardInfo = ({userData}) => {
         fetchFrases();
     },[])
   return (
-    <div className='bg-gradient-to-tl from-gray-800 to-gray-700 px-2 py-3 rounded flex items-center border-1 border-gray-500 gap-2  '>
-        <img src={userData.urlImg} alt="imagen de perfil" className='rounded-full mr-1.5 w-[50px] h-[50px]' />
+    <div className='bg-gradient-to-tl  from-gray-800 to-gray-700 px-2 py-3 rounded flex items-center border-1 border-gray-500 gap-2  '>
+        <img src={userData.urlImg} alt="imagen de perfil" className='hidden sm:flex rounded-full mr-1.5 w-[50px] h-[50px]' />
         <div>
             <div className="flex justify-between">
                 <h2 className="font-bold text-1xl" >{userData.name + userData.icon}</h2>

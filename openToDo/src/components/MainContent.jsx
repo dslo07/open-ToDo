@@ -1,14 +1,17 @@
-import { cache, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import CardInfo from './CardInfo';
 import Pomodoro from './Pomodoro';
-import OpenChat from './OpenChat';
+import InfoMode from './InfoMode';
 import ModalAddTask from './ModalAddTaks';
 import NoContent from './NoContent';
+import FabMenu from './FabMenu'
 import TaskManager from './TaskManager';
 
 const MainContent = ({ userData }) => {
   const [open, setOpen] = useState(false);
+  const [isPomodoro, setIsPomodoro] = useState(true);
   const [taskList, setTaskList] = useState([]);
+  const [associated, setAssociated] = useState({})
 
   // buscar si hay tareas guardadas
     useEffect(() => {
@@ -24,29 +27,32 @@ const MainContent = ({ userData }) => {
     }, [taskList]);
 
   return (
-    <section className="flex justify-between p-4 min-h-[450px] w-[1220px] bg-gray-950 border border-gray-500">
+    <section className="flex justify-between p-4 min-h-[450px] w-full sm:gap-3 bg-gray-950 border border-gray-500 m-2">
       
       {/* lado izquierdo */}
-      <div className="mr-3 max-w-[500px] flex flex-col gap-4">
-        
-        <CardInfo userData={userData} />
+      <div className="max-w-[500px] ">
+        <div className='mb-4'>
+          <CardInfo userData={userData} />
+        </div>
 
-        <div className="rounded border  h-[305px] border-gray-500 bg-gradient-to-tl from-gray-800 to-gray-700">
+        <div className="rounded border border-gray-500 bg-gradient-to-tl from-gray-800 to-gray-700">
           <div className="flex justify-end px-4 py-2">
-            <button className="flex items-center p-1 text-xl rounded cursor-pointer transition-transform transform hover:scale-110 hover:shadow-lg " onClick={() => setOpen(true)}>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="size-6">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            <button className="flex items-center p-1 text-xl rounded cursor-pointer transition-transform transform hover:scale-110 hover:shadow-lg " onClick={() => setIsPomodoro(!isPomodoro)}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m11.25 11.25.041-.02a.75.75 0 0 1 1.063.852l-.708 2.836a.75.75 0 0 0 1.063.853l.041-.021M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9-3.75h.008v.008H12V8.25Z" />
               </svg>
             </button>
           </div>
-          <div className="flex flex-wrap justify-center px-4 pb-4">
-            <Pomodoro />
+
+
+          <div className='py-4'>
+            { isPomodoro ? <Pomodoro associated={associated}/> : <InfoMode  /> }
           </div>
         </div>
       </div>
 
       {/* lado Derecho */}
-      <div className="flex flex-col gap-4 flex-1">
+      <div className="sm:flex flex-col gap-4 flex-1 hidden">
         
         {/* filtros */}
         <div className="flex flex-wrap gap-2 p-3 border justify-between border-gray-500 rounded">
@@ -84,10 +90,11 @@ const MainContent = ({ userData }) => {
         {/* tareas */}
         {taskList.length <= 0
           ? <NoContent />
-          : <TaskManager taskList={taskList} />
+          : <TaskManager taskList={taskList}  setAssociated={setAssociated}/>
         }
       </div>
-
+      {/* Menu Flotante */}
+      <FabMenu setOpen={setOpen}/>
       {/* modal */}
       <ModalAddTask open={open} setOpen={setOpen} taskList={taskList} setTaskList={setTaskList}/>
     </section>
