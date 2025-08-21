@@ -41,7 +41,7 @@ const Pomodoro = ( { associated = null } ) => {
 
   return (
     <div className='text-center'>
-      <h2 className="text-7xl m-3">{formatTime()}</h2>
+      <h2 className="text-7xl mb-3">{formatTime()}</h2>
         <div className="flex justify-center items-center flex-col gap-4">
           <div className="flex gap-3">
             <button className="border py-1 px-4 rounded text-xl font-semibold hover:bg-gray-100 hover:text-gray-900 cursor-pointer" onClick={handleStartPause}>
