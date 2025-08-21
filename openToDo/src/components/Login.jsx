@@ -58,7 +58,7 @@ const Login = ({ setUserData, setIsLogin }) => {
       }
     }
   return (
-    <div className=" w-screen  flex justify-center p-8">
+    <div className=" w-screen  flex justify-center px-8">
       <div className="bg-gray-950 p-4 w-full max-w-sm min-h-[100px] h-auto text-white border border-gray-400 rounded flex-nowrap">
         {/*Datos del usuario*/}
         <div className='flex gap-2'>

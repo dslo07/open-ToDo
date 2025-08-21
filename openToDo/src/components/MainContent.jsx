@@ -27,7 +27,7 @@ const MainContent = ({ userData }) => {
     }, [taskList]);
 
   return (
-    <section className="flex justify-between p-4 min-h-[450px] w-full sm:gap-3 bg-gray-950 border border-gray-500 m-2">
+    <section className="flex justify-between p-4 min-h-[450px] sm:gap-3 bg-gray-950 border border-gray-500 m-2">
       
       {/* lado izquierdo */}
       <div className="max-w-[500px] ">
@@ -56,18 +56,20 @@ const MainContent = ({ userData }) => {
         
         {/* filtros */}
         <div className="flex flex-wrap gap-2 p-3 border justify-between border-gray-500 rounded">
-          <input type="text" placeholder="Filter by name" className="px-3 rounded bg-gray-900 text-white placeholder-gray-400" />
-          <select name="priority" id="sltPriority" className="px-3 rounded bg-gray-900 text-white" >
-            <option value="">Select Priority</option>
-            <option value="high">High</option>
-            <option value="mid">Mid</option>
-            <option value="low">Low</option>
-          </select>
-          <select name="priority" id="sltPriority" className="px-3 rounded bg-gray-900 text-white" >
-            <option value="">Select time</option>
-            <option value="Nearby">Nearby</option>
-            <option value="Lately">Mid</option>
-          </select>
+          <div className='flex gap-4'>
+            <input type="text" placeholder="Filter by name" className="px-3 rounded bg-gray-900 text-white placeholder-gray-400" />
+            <select name="priority" id="sltPriority" className="px-3 rounded bg-gray-900 text-white" >
+              <option value="">Select Priority</option>
+              <option value="high">High</option>
+              <option value="mid">Mid</option>
+              <option value="low">Low</option>
+            </select>
+            <select name="priority" id="sltPriority" className="px-3 rounded bg-gray-900 text-white" >
+              <option value="">Select time</option>
+              <option value="Nearby">Nearby</option>
+              <option value="Lately">Mid</option>
+            </select>
+          </div>
           <div className='flex justify-end gap-2'>
             <button type="button" className="relative inline-flex items-center rounded-l-md px-2 py-2 text-gray-400 inset-ring inset-ring-gray-700 hover:bg-white/5 focus:z-20 focus:outline-offset-0" aria-label="Previous">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">

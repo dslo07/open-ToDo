@@ -5,23 +5,14 @@ const Pomodoro = ( { associated = null } ) => {
   const [timeLeft, setTimeLeft] = useState(25 * 60); // 25 minutos
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef(null);
-        // const task = {
-        //   name: "nombre de prueba",
-        //   priority: "High",
-        //   expiration: "25-08-2025",
-        //   description: "tarea de",
-        //   id: Date.now()
-        // };
 
-
-  
   // Formatear minutos y segundos
   const formatTime = () => {
     const minutes = Math.floor(timeLeft / 60);
     const seconds = timeLeft % 60;
     return `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
   };
-
+  
   useEffect(() => {
     if (isRunning) {
       intervalRef.current = setInterval(() => {
@@ -75,8 +66,6 @@ const Pomodoro = ( { associated = null } ) => {
               {
                 associated  && associated.name != null ? <CardTask task={associated} message={"Mark As Ready"}/> : "No task associated yet"
               }
-
-              
             </div>
     </div>
   );
