@@ -1,5 +1,6 @@
 import {  Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
 import { useEffect, useState } from 'react'
+import toast, { Toaster } from 'react-hot-toast'
 
 export default function ModalAddTask({ open, taskList, setOpen, setTaskList}) {
   const [taskName,setTaskName] = useState("");
@@ -28,20 +29,25 @@ const addTaskList = () => {
           // Cerrar modal
           setOpen(false);  
       }else{
-        alert("You need set the priority  ");
+        toast.error('You need set the priority.');
       }
     }else{
-    alert("the description must be lower than 100 character");
-    }
-  }else{
-    alert("the title must be lower than 60 character");
+    toast.error('The description must be lower than 100 character.');
+  }
+}else{
+    toast.error('The title must be lower than 60 character.');
   }
 };
 
 
 
   return (  
-    <div className=''>
+    <div >
+      <Toaster 
+        position="top-center" 
+        reverseOrder={false} 
+        toastOptions={{ duration: 2000}}  
+      />
       <Dialog open={open} onClose={setOpen} className="relative z-10">
         <DialogBackdrop
           transition

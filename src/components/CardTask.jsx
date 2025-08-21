@@ -6,7 +6,9 @@ const   CardTask = ({ task,setAssociated, message = "Do now" }) => {
     const notify = () => {
       toast.success('Task associated.');
       setAssociated(task);
-      setText("Associated")
+      if(text != "Associated"){
+        setText("Associated")
+      }
     }
   
   const setPriority= (priority)=>{
