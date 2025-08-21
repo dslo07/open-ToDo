@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { FiPlus, FiEdit, FiTrash, FiShare } from "react-icons/fi"; 
 import { IoIosAddCircleOutline } from "react-icons/io";
+import { IoMenu } from "react-icons/io5";
 import { CgProfile } from "react-icons/cg";
 import { IoLibrary } from "react-icons/io5";
-
-const FabMenu = ({setOpen}) => {
+import { GiTomato } from "react-icons/gi";
+const FabMenu = ({setOpen,showTask, setIsLogin,setShowTask}) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -14,13 +14,13 @@ const FabMenu = ({setOpen}) => {
       {/* Botones secundarios */}
       {isOpen && (
         <>
-          <button className="p-3 rounded-full bg-white flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer" size={30}>
+          <button onClick={()=>{setIsLogin(false)}} className="p-3 rounded-full bg-white flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer" size={30}>
             <CgProfile className="text-blue-600" />
           </button>
           <button onClick={()=>setOpen(true)}  aria-label="Open profile"  className="p-3 rounded-full bg-white flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer">
             <IoIosAddCircleOutline className="text-green-700" />
           </button>
-          <button className="p-3 rounded-full sm:hidden bg-white flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer">
+          <button onClick={()=>setShowTask(!showTask)} className="p-3 rounded-full sm:hidden bg-white flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer">
             <IoLibrary className="text-green-600" />
           </button>
         </>
@@ -29,9 +29,10 @@ const FabMenu = ({setOpen}) => {
       {/* Botón principal */}
       <button
         onClick={toggleMenu}
-        className="p-4 rounded-full bg-blue-600 text-white shadow-lg hover:bg-blue-700 transition-all"
+        className="p-4 rounded-full bg-gray-950 text-white shadow-lg border hover:bg-gray-700 transition-all"
       >
-        <FiPlus className={`transform transition-transform duration-300 ${isOpen ? "rotate-45" : ""}`} size={24} />
+        
+        <IoMenu  className={`transform transition-transform duration-300 ${isOpen ? "rotate-90" : ""}`} size={24} />
       </button>
     </div>
   );

@@ -6,14 +6,17 @@ const Login = ({ setUserData, setIsLogin }) => {
   const [country, setCountry] = useState('');
   const [carrier, setCarrier] = useState('');
   const [city, setCity] = useState('');
-  const [icon, setIcon] = useState('👨‍💻');
+  const icon = "👨‍💻"
   const [userImg, setUserImg] = useState('https://avatars.githubusercontent.com/u/107158851?v=4');
   const [userDesc, SetUserDesc] = useState(`I'm from  ${country} and I live in ${city}. Currently I am ${carrier} . I love creating beautiful software that delights users and reimagines the way we interact with technology.`);
-  
+    // buscaremos si hay algun dato guardado en el cache del navegador, si lo hay
+    
+
     // validacion de datos 
     useEffect(() => {
       SetUserDesc(`I'm from ${country} and I live in ${city}. Currently I am ${carrier} and I love creating beautiful software that delights users and reimagines the way we interact with technology.`);
     }, [country, city, carrier])
+
     //confirmar Datos
     const submitForm = (e) =>{
       const datos = [country, city, carrier]
@@ -32,6 +35,7 @@ const Login = ({ setUserData, setIsLogin }) => {
         setIsLogin(true);
       }
     }
+
     //Fetch para buscar perfil de git 
     const fetchGit = (e)=>{
       let gitUser = e.target.value.trim()
