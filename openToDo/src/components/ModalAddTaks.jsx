@@ -41,7 +41,7 @@ const addTaskList = () => {
 
 
   return (  
-    <div>
+    <div className=''>
       <Dialog open={open} onClose={setOpen} className="relative z-10">
         <DialogBackdrop
           transition
@@ -49,7 +49,7 @@ const addTaskList = () => {
         />
 
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <div className="flex min-h-full items-start justify-center p-4 text-center sm:items-center sm:p-0">
             <DialogPanel
               transition
               className="relative transform overflow-hidden rounded-lg bg-gray-800 text-left shadow-xl outline -outline-offset-1 outline-white/10 transition-all data-closed:translate-y-4 data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in sm:my-8 sm:w-full sm:max-w-lg data-closed:sm:translate-y-0 data-closed:sm:scale-95"
@@ -61,11 +61,11 @@ const addTaskList = () => {
                       Create New Task
                     </DialogTitle>
                     <div className="mt-2">
-                      <p className="text-sm text-gray-400">
-                        Upgrade your routine and take full control of your day. <br/> Start managing your tasks smarter, stay organized, and achieve more with the best productivity platform today!
+                      <p className="text-sm text-start text-gray-400">
+                        Upgrade your routine and take full control of your day. Start managing your tasks smarter, stay organized, and achieve more with the best productivity platform today!
                       </p>
                       {/*Inicio del formulario*/}
-                      <form  className='mt-3'>
+                      <form  className='mt-3 text-start'>
                         <div className='mb-2'>
                           <label htmlFor="titleTask" className='block text-md mb-1'>Task Name:</label>
                           <input type="text" id="taskName" placeholder='Max 80 character.' className='w-full  bg-gray-900 p-1 px-3 rounded' onChange={(e)=>{setTaskName(e.target.value.trim())}}/>
@@ -96,7 +96,7 @@ const addTaskList = () => {
                 <button
                   type="button"
                   onClick={addTaskList}
-                  className="inline-flex w-full justify-center rounded-md bg-gray-300 px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-100 cursor-pointer sm:ml-3 sm:w-auto"
+                  className="inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 hover:bg-gray-100 cursor-pointer sm:ml-3 sm:w-auto"
                 >
                     Create Task
                 </button>
