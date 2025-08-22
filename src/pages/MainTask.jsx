@@ -5,16 +5,28 @@ const MainTask = ({ taskList, setAssociated }) => {
   const[list,setList] = useState([])
   const[filter,setFilter] = useState("")
 
-  useEffect(() => {
-    const filtered = taskList.filter((task) => {
-      if (filter === "High") return task.priority === "High";
-      if (filter === "Mid") return task.priority === "Mid";
-      if (filter === "Low") return task.priority === "Low";
-      if (filter === "All") return true; // si no hay filtro, mostrar todo
-    });
+useEffect(() => {
+  const filtered = taskList.filter((task) => {
+    switch (filter) {
+      case "Ready":
+        return task.priority === "Ready";
+      case "High":
+        return task.priority === "High";
+      case "Mid":
+        return task.priority === "Mid";
+      case "Low":
+        return task.priority === "Low";
+      case "All":
+        return true;
+      default:
+        return true; // Por si acaso el filtro no es reconocido
+    }
+  });
 
-    setList(filtered);
-  }, [filter, taskList]);
+  setList(filtered);
+}, [filter, taskList]);
+
+
 
 
 
@@ -37,8 +49,8 @@ const MainTask = ({ taskList, setAssociated }) => {
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
             >
-              <option value="">Select Priority</option>
-              <option value="">All</option>
+              <option value="" >Select Priority</option>
+              <option value="" >All</option>
               <option value="High">High</option>
               <option value="Mid">Mid</option>
               <option value="Low">Low</option>
@@ -61,6 +73,7 @@ const MainTask = ({ taskList, setAssociated }) => {
               type="button"
               className="inline-flex items-center rounded-l-md  border px-2 py-2 text-gray-400 hover:bg-white/5"
               aria-label="Previous"
+              onClick={()=>{setFilter("Ready")}}
             >
               {/* Icono 1 */}
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
@@ -90,7 +103,7 @@ const MainTask = ({ taskList, setAssociated }) => {
 
         <div className="mt-auto h-auto">
           {/* tareas */}
-          {taskList.length <= 0
+          {taskList.length <= 0 
             ? <NoContent />
             : <TaskManager taskList={list}  setAssociated={setAssociated}/>
           }

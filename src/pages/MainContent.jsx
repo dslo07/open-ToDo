@@ -4,7 +4,7 @@ import FabMenu from '../components/FabMenu'
 import MainTask from './MainTask';
 import PersonalInfo from './PersonalInfo';
 const MainContent = ({ userData,setIsLogin,taskList,setTaskList }) => {
-  const [associated, setAssociated] = useState({});
+  const [associated, setAssociated] = useState([]);
   const [open, setOpen] = useState(false);
   const [showTask,setShowTask] = useState(false)
 //
