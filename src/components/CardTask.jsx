@@ -3,9 +3,16 @@ import toast, { Toaster } from 'react-hot-toast'
 
 const   CardTask = ({ task,setAssociated, message = "Do now" }) => {
   const [text,setText] = useState(message)
-    const notify = () => {
+
+  const notify = () => {
       toast.success('Task associated.');
-      setAssociated(task);
+      toast.success('Task associated.');
+      toast.success('Task associated.');
+      toast.success('Task associated.');
+      toast.success('Task associated.');
+      toast.success('Task associated.');
+        setAssociated(prev => [...prev, task ]);
+        
       if(text != "Associated"){
         setText("Associated")
       }
@@ -26,12 +33,11 @@ const   CardTask = ({ task,setAssociated, message = "Do now" }) => {
     }
   }
 
-    //setPriority(task.priority)
     return (
     <div  className=' bg-gray-900 p-3 flex flex-col justify-between rounded-lg border-[1px] h-[150px] w-[320px] sm:w-full border-gray-500 transition-transform transform hover:scale-102 hover:shadow-lg ' >
             <Toaster 
               position="top-center" 
-              reverseOrder={false} 
+              reverseOrder={true} 
               toastOptions={{ duration: 2000}}  
             />
       <div>

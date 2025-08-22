@@ -1,5 +1,5 @@
 import {  Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
 
 export default function ModalAddTask({ open, taskList, setOpen, setTaskList}) {

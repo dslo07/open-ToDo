@@ -62,11 +62,16 @@ const Pomodoro = ( { associated = null } ) => {
               </div>
             )}
         </div>
-            <div className='mt-3 px-3'>
-              {
-                associated  && associated.name != null ? <CardTask task={associated} message={"Mark As Ready"}/> : "No task associated yet"
-              }
-            </div>
+          <div className='mt-3 px-3 flex flex-col gap-2'>
+            {
+              associated && associated.length > 0
+                ? associated.map((task) => (
+                    <CardTask key={task.id} task={task} message={"Mark As Ready"} />
+                  ))
+                : <p className="text-gray-400 italic">No task associated yet</p>
+            }
+          </div>
+
     </div>
   );
 };

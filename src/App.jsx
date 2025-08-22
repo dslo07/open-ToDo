@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import Login from './components/Login'
-import MainContent from './components/MainContent'
+import Login from './pages/Login'
+import MainContent from './pages/MainContent'
 import './App.css'
 
 function App() {

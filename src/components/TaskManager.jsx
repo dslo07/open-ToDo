@@ -5,8 +5,8 @@ const TaskManager = ( {taskList,setAssociated}) => {
     
   return (
     <>   
-      <div className=' sm:grid  sm:grid-cols-2 gap-3 '>
-        {taskList.map(task => (<div key={task.id}> <CardTask task={task } setAssociated={setAssociated} /> </div>) )}
+      <div className='grid sm:grid  sm:grid-cols-2 gap-3 '>
+        {taskList.map(task => (<div key={task.id} > <CardTask task={task } setAssociated={setAssociated} /> </div>) )}
       </div>
     </>
   )
