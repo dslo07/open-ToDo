@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast'
 
 const Login = ({ setUserData, setIsLogin }) => {
   // Estados locales
@@ -10,7 +11,6 @@ const Login = ({ setUserData, setIsLogin }) => {
   const [userImg, setUserImg] = useState('https://avatars.githubusercontent.com/u/107158851?v=4');
   const [userDesc, SetUserDesc] = useState(`I'm from  ${country} and I live in ${city}. Currently I am ${carrier} . I love creating beautiful software that delights users and reimagines the way we interact with technology.`);
     // buscaremos si hay algun dato guardado en el cache del navegador, si lo hay
-    
 
     // validacion de datos 
     useEffect(() => {
@@ -19,10 +19,10 @@ const Login = ({ setUserData, setIsLogin }) => {
 
     //confirmar Datos
     const submitForm = (e) =>{
-      const datos = [country, city, carrier]
+      const datos = [country, city, carrier,userName,carrier]
       e.preventDefault();
       if (datos.some((dato)=> dato.length === 0)){
-        alert("todos los datos deben estar completos")
+        toast.error("You must fill in the required fields.")
       }else{
         const user = {
               name: userName,
@@ -47,7 +47,13 @@ const Login = ({ setUserData, setIsLogin }) => {
     }
     
   return (
+    
     <div className=" w-screen  flex justify-center px-8">
+      <Toaster 
+        position="top-center" 
+        reverseOrder={false} 
+        toastOptions={{ duration: 1500}}  
+      />
       <div className="bg-gray-950 p-4 w-full max-w-sm min-h-[100px] h-auto text-white border border-gray-400 rounded flex-nowrap">
         {/*Datos del usuario*/}
         <div className='flex gap-2'>
