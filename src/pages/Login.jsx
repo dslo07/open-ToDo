@@ -47,7 +47,7 @@ const Login = ({ setUserData, setIsLogin }) => {
     }
     
   return (
-    
+
     <div className=" w-screen  flex justify-center px-8">
       <Toaster 
         position="top-center" 

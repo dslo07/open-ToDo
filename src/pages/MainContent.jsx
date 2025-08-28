@@ -1,29 +1,33 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ModalAddTask from '../components/ModalAddTaks';
 import FabMenu from '../components/FabMenu'
 import MainTask from './MainTask';
 import PersonalInfo from './PersonalInfo';
-const MainContent = ({ userData,setIsLogin,taskList,setTaskList }) => {
-  const [associated, setAssociated] = useState([]);
+import { Toaster } from 'react-hot-toast'
+
+const MainContent = () => {
+
   const [open, setOpen] = useState(false);
   const [showTask,setShowTask] = useState(false)
 //
   return (
-    <section className="rounded-lg flex justify-between p-4 min-h-[450px] sm:gap-3 bg-gray-950 border border-gray-500 m-2">
+    <section className="rounded-lg flex justify-between p-4 min-h-[450px] bg-gray-950 border border-gray-500">
       <div className='flex'>
-        {
-          /* Mostrar MenuTask o la informacion personal segun corresponda (en pantallas mobiles)*/
-          showTask ? <MainTask taskList={taskList} setAssociated={setAssociated}/> : <PersonalInfo associated={associated} userData={userData} />
+        {/* Mostrar MenuTask o la informacion personal segun corresponda (en pantallas mobiles)*/
+          showTask ? <MainTask /> : <PersonalInfo />
         }
         {/*Esta seccion es solamente visible para el pc */}
-        <div className='hidden sm:flex'>
-          <MainTask taskList={taskList} setAssociated={setAssociated}/>
+        <div className='hidden lg:flex'>
+          <MainTask />
         </div>
       </div>
-        {/* Menu Flotante */}
-        <FabMenu setOpen={setOpen} showTask={showTask} setIsLogin={setIsLogin} setShowTask={setShowTask}/>
-        {/* modal */}
-        <ModalAddTask open={open} setOpen={setOpen} taskList={taskList} setTaskList={setTaskList}/>
+
+        {/* flotantes */}
+      <div>
+        <FabMenu setOpen={setOpen} showTask={showTask}  setShowTask={setShowTask}/> {/*menu navegacion*/}
+        <ModalAddTask open={open} setOpen={setOpen} /> {/* modal */}
+        <Toaster position="top-center" reverseOrder={true} toastOptions={{ duration: 2000}}  /> {/*alert con mensajes*/}
+      </div>
     </section>
   );
 };

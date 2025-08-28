@@ -1,15 +1,17 @@
-import { useState,useEffect } from "react"
+import { useState,useEffect,useContext } from "react"
+import { userContext } from "../contexts/user/UserContext";
 import React from 'react'
 
 
-const CardInfo = ({userData}) => {
+const CardInfo = () => {
+    const { userData } = useContext(userContext);
     const [isMotiMode,setMotiMode] = useState(false);
     const [frases,setFrases] = useState([]);
     
     //fetch a frases
     useEffect(()=>{
         const  fetchFrases = async ()=>{
-            const res = await fetch('./frases_motivacionales.json');
+            const res = await fetch('/frases_motivacionales.json');
             const data = await res.json();
             setFrases(data)
         }

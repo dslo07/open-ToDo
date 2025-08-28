@@ -1,14 +1,17 @@
 import {  Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import toast, { Toaster } from 'react-hot-toast'
+import { taskContext } from '../contexts/task/TaskContext';
 
-export default function ModalAddTask({ open, taskList, setOpen, setTaskList}) {
+export default function ModalAddTask({ open, setOpen}) {
   const [taskName,setTaskName] = useState("");
   const [taskPriority,setTaskPriority] = useState("");
   const [taskExpiration,setTaskExpiration] = useState("");
   const [taskDescription,setTaskDescription] = useState("");
+  const { setTaskList } = useContext(taskContext);
 
-const addTaskList = () => {
+
+  const addTaskList = () => {
   if(taskName.length < 80 && taskName !== ""){
     if (taskDescription.length <= 100) {
       if (taskPriority != "") {
@@ -17,11 +20,13 @@ const addTaskList = () => {
           priority: taskPriority,
           expiration: taskExpiration,
           description: taskDescription,
+          associated: false,
           id: Date.now()
-        };
+        }
           //
           setTaskList(prev => [...prev, newTask]);
           //limpiar el formulario 
+          toast.success('Task created.');
           setTaskName('');
           setTaskPriority('');
           setTaskExpiration('');
@@ -43,11 +48,7 @@ const addTaskList = () => {
 
   return (  
     <div >
-      <Toaster 
-        position="top-center" 
-        reverseOrder={false} 
-        toastOptions={{ duration: 2000}}  
-      />
+
       <Dialog open={open} onClose={setOpen} className="relative z-10">
         <DialogBackdrop
           transition

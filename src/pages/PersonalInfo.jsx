@@ -2,13 +2,13 @@ import {React,useState} from "react";
 import CardInfo from "../components/CardInfo";
 import Pomodoro from "../components/Pomodoro";
 import InfoMode from "../components/InfoMode";
-export const PersonalInfo = ({ associated,userData }) =>{
+export const PersonalInfo = ({ associated }) =>{
   const [isPomodoro, setIsPomodoro] = useState(true);
 
     return(
-    <div className="max-w-[500px] ">
+    <div >
         <div className='mb-4'>
-          <CardInfo userData={userData} />
+          <CardInfo/>
         </div>
 
         <div className="rounded border border-gray-500 bg-gradient-to-tl from-gray-800 to-gray-700">
