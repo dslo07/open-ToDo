@@ -4,7 +4,7 @@ import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
 const InfoMode = () => {
   return (
-    <div className='flex justify-center items-center text-center p-2'>
+    <div className='flex justify-center items-center text-center p-2 animate-flip-in-x'>
         <div>
             
     <DotLottieReact
