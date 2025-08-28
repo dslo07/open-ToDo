@@ -20,7 +20,7 @@ const FabMenu = ({setOpen,showTask, setIsLogin,setShowTask}) => {
           <button onClick={()=>setOpen(true)}  aria-label="Open profile"  className="p-3 rounded-full bg-white flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer">
             <IoIosAddCircleOutline className="text-green-700" />
           </button>
-          <button onClick={()=>setShowTask(!showTask)} className="p-3 rounded-full sm:hidden bg-white flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer">
+          <button onClick={()=>setShowTask(!showTask)} className="p-3 rounded-full lg:hidden bg-white flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer">
             <IoLibrary className="text-green-600" />
           </button>
         </>

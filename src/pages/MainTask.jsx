@@ -1,39 +1,39 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState,useContext } from "react"
+import { taskContext }  from '../contexts/task/TaskContext'
 import NoContent from '../components/NoContent'
 import TaskManager from '../components/TaskManager'
-const MainTask = ({ taskList, setAssociated }) => {
-  const[list,setList] = useState([])
-  const[filter,setFilter] = useState("")
 
-useEffect(() => {
-  const filtered = taskList.filter((task) => {
-    switch (filter) {
-      case "Ready":
-        return task.priority === "Ready";
-      case "High":
-        return task.priority === "High";
-      case "Mid":
-        return task.priority === "Mid";
-      case "Low":
-        return task.priority === "Low";
-      case "All":
-        return true;
-      default:
-        return true; // Por si acaso el filtro no es reconocido
-    }
-  });
+const MainTask = ({ setAssociated }) => {
+  const [ filter,setFilter ] = useState("");  
+  const { taskList } = useContext(taskContext); 
+  const [ list,setList ] = useState([]);
 
-  setList(filtered);
-}, [filter, taskList]);
-
-
-
-
+  useEffect(() => {
+    const filtered = list.filter((task) => {
+      switch (filter) {
+        case "Ready":
+          return task.priority === "Ready";
+        case "High":
+          return task.priority === "High";
+        case "Mid":
+          return task.priority === "Mid";
+        case "Low":
+          return task.priority === "Low";
+        default:
+          return true; // Por si acaso el filtro no es reconocido
+      }
+    });
+    setList(filtered);
+  }, [filter, taskList]);
+  
+  useEffect(()=>{
+    setList(taskList);    
+  },[taskList])
 
     return (
     <div className="flex-col gap-2 px-2 items-center "> 
         {/* filtros */}
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center border-gray-500 rounded p-2 gap-4">
+        <div className="flex flex-col justify-between items-start border-gray-500 rounded p-2 gap-4">
           {/* Inputs de filtro */}
           <div className="flex flex-col md:flex-row gap-2 md:gap-4 w-full md:w-auto">
             <input
@@ -48,9 +48,10 @@ useEffect(() => {
               className="px-3 py-2 rounded bg-gray-900 text-white w-full md:w-48"
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
+            
             >
-              <option value="" >Select Priority</option>
-              <option value="" >All</option>
+              <option value="">Priority</option>
+              <option value="All">All</option>
               <option value="High">High</option>
               <option value="Mid">Mid</option>
               <option value="Low">Low</option>
@@ -61,14 +62,15 @@ useEffect(() => {
               id="time"
               className="px-3 py-2 rounded bg-gray-900 text-white w-full md:w-48"
             >
-              <option value="">All</option>
+              <option >Time</option>
+              <option value="All">All</option>
               <option value="Nearby">Nearby</option>
               <option value="Lately">Lately</option>
             </select>
           </div>
 
           {/* Botones de paginación */}
-          <div className="flex gap-2  sm:justify-end justify-start md:self-auto">
+          <div className="flex gap-2 justify-start ">
             <button
               type="button"
               className="inline-flex items-center rounded-l-md  border px-2 py-2 text-gray-400 hover:bg-white/5"
