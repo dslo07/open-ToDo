@@ -25,9 +25,9 @@ const   CardTask = ({ task,setAssociated }) => {
   }
 
     return (
-    <div  className=' bg-gray-900 p-3 flex flex-col justify-between rounded-lg border-[1px] h-[150px] w-full sm:w-full border-gray-500 transition-transform transform hover:scale-102 hover:shadow-lg ' >
+    <div  className='animate-blink bg-gray-900 p-3 flex flex-col justify-between rounded-lg border-[1px] h-[150px] w-full sm:w-full border-gray-500 transition-transform transform hover:scale-102 hover:shadow-lg ' >
 
-      <div>
+      <div className=''>
           <div className='flex justify-between '>
               <span className={setPriority(task.priority)}>{task.priority}</span>
               <span className='text-sm border-[1px] py-1 px-2 rounded border-gray-400 bg-gray-600'>{task.expiration === "" ? "No-Expiration" : task.expiration  }</span>

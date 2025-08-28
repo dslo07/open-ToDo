@@ -20,7 +20,7 @@ const CardInfo = () => {
   return (
     <div className='bg-gradient-to-tl  from-gray-800 to-gray-700 px-2 py-3 rounded sm:flex-  border-1 border-gray-500 gap-2  '>
         <div className="flex justify-center">
-            <img src={userData.urlImg} alt="imagen de perfil" className='shadow-lg  rounded-full mr-1.5 w-[70px] h-[70px]' />
+            <img src={userData.urlImg} alt="imagen de perfil"  className='shadow-lg rounded-full mr-1.5 w-[70px] h-[70px]' />
         </div>
         <div>
             <div className="flex justify-between">

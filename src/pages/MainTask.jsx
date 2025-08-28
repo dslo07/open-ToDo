@@ -9,7 +9,7 @@ const MainTask = ({ setAssociated }) => {
   const [ list,setList ] = useState([]);
 
   useEffect(() => {
-    const filtered = list.filter((task) => {
+    const filtered = taskList .filter((task) => {
       switch (filter) {
         case "Ready":
           return task.priority === "Ready";
@@ -19,6 +19,8 @@ const MainTask = ({ setAssociated }) => {
           return task.priority === "Mid";
         case "Low":
           return task.priority === "Low";
+        case "All":
+          return true;
         default:
           return true; // Por si acaso el filtro no es reconocido
       }
@@ -45,7 +47,7 @@ const MainTask = ({ setAssociated }) => {
             <select
               name="priority"
               id="priority"
-              className="px-3 py-2 rounded bg-gray-900 text-white w-full md:w-48"
+              className="px-3 py-2 rounded bg-gray-900 text-white w-full md:w-48 cursor-pointer"
               value={filter}
               onChange={(e) => setFilter(e.target.value)}
             
@@ -60,7 +62,7 @@ const MainTask = ({ setAssociated }) => {
             <select
               name="time"
               id="time"
-              className="px-3 py-2 rounded bg-gray-900 text-white w-full md:w-48"
+              className="px-3 py-2 rounded bg-gray-900 text-white w-full md:w-48 cursor-pointer" 
             >
               <option >Time</option>
               <option value="All">All</option>
@@ -73,7 +75,7 @@ const MainTask = ({ setAssociated }) => {
           <div className="flex gap-2 justify-start ">
             <button
               type="button"
-              className="inline-flex items-center rounded-l-md  border px-2 py-2 text-gray-400 hover:bg-white/5"
+              className="inline-flex items-center rounded-l-md cursor-pointer border px-2 py-2 text-gray-400 hover:bg-white/5"
               aria-label="Previous"
               onClick={()=>{setFilter("Ready")}}
             >
@@ -85,7 +87,7 @@ const MainTask = ({ setAssociated }) => {
 
             <button
               type="button"
-              className="inline-flex items-center px-2 py-2 rounded-s border text-gray-400 hover:bg-white/5"
+              className="inline-flex items-center cursor-pointer px-2 py-2 rounded-s border text-gray-400 hover:bg-white/5"
               aria-label="Previous"
             >
                   <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="size-5">
@@ -95,7 +97,7 @@ const MainTask = ({ setAssociated }) => {
 
             <button
               type="button"
-              className="inline-flex items-center border rounded-r-md px-2 py-2 text-gray-400 hover:bg-white/5"
+              className="inline-flex items-center border cursor-pointer rounded-r-md px-2 py-2 text-gray-400 hover:bg-white/5"
               aria-label="Next"
             >
                 <svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true" className="size-5" > <path d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z" clipRule="evenodd" fillRule="evenodd" /> </svg>
