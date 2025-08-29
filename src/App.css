@@ -1,2 +1,18 @@
 @import 'tailwindcss';
 @plugin '@midudev/tailwind-animations';
+
+/**/
+/* global.css */
+.scrollbar-custom::-webkit-scrollbar {
+  height: 4px;
+  margin-top: 2px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+  background: #00000000; /* Tailwind green-800 */
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+  background: #030712; /* Tailwind green-500 */
+  border-radius: 4px;
+}
