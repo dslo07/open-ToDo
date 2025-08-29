@@ -1,7 +1,8 @@
-import { useEffect, useState, useRef } from 'react';
-import CardTask from './CardTask';
-
-const Pomodoro = ( { associated = null } ) => {
+import { useEffect, useState, useRef, useContext } from 'react';
+import { taskContext } from '../contexts/task/TaskContext';
+import Slider from './Slider';
+const Pomodoro = ( ) => {
+  const { associated } = useContext(taskContext)
   const [timeLeft, setTimeLeft] = useState(25 * 60); // 25 minutos
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef(null);
@@ -62,14 +63,13 @@ const Pomodoro = ( { associated = null } ) => {
               </div>
             )}
         </div>
-          <div className='mt-3 px-3 flex flex-col gap-2'>
+          <div className='mt-3 px-3 flex flex-col gap-2  justify-center'>
             {
               associated && associated.length > 0
-                ? associated.map((task) => (
-                    <CardTask key={task.id} task={task} message={"Mark As Ready"} />
-                  ))
+                ? <Slider/>
                 : <p className="text-gray-400 italic">No task associated yet</p>
             }
+          
           </div>
 
     </div>

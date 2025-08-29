@@ -9,6 +9,7 @@ module.exports = {
     extend: {},
   },
   plugins: [
-    animations
+    animations,
+     require('tailwind-scrollbar')({ nocompatible: true }),
   ],
 }

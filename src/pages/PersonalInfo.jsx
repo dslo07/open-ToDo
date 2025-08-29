@@ -6,7 +6,7 @@ export const PersonalInfo = ({ associated }) =>{
   const [isPomodoro, setIsPomodoro] = useState(true);
 
     return(
-    <div >
+    <div className="max-w-[480px]">
         <div className='mb-4'>
           <CardInfo/>
         </div>

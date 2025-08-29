@@ -1,12 +1,12 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import toast from 'react-hot-toast'
-
-const   CardTask = ({ task,setAssociated }) => {
-
+import {taskContext} from '../contexts/task/TaskContext'
+const   CardTask = ({ task }) => {
+  const { setAssociated } = useContext(taskContext) 
   const notify = () => {
+      task.associated = true
+      setAssociated(prev => [...prev, task ]);        
       toast.success('Task associated.');
-        setAssociated(prev => [...prev, task ]);
-          
     }
   
   const setPriority= (priority)=>{
@@ -25,7 +25,7 @@ const   CardTask = ({ task,setAssociated }) => {
   }
 
     return (
-    <div  className='animate-blink bg-gray-900 p-3 flex flex-col justify-between rounded-lg border-[1px] h-[150px] w-full sm:w-full border-gray-500 transition-transform transform hover:scale-102 hover:shadow-lg ' >
+    <div  className='max-w-[340px] sm:max-w-[480px] animate-blink bg-gray-900 p-3 flex flex-col justify-between rounded-lg border-[1px] h-[150px] w-full sm:w-full border-gray-500 transition-transform transform hover:scale-102 hover:shadow-lg ' >
 
       <div className=''>
           <div className='flex justify-between '>

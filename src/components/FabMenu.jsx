@@ -14,14 +14,16 @@ const FabMenu = ({setOpen,showTask, setIsLogin,setShowTask}) => {
       {/* Botones secundarios */}
       {isOpen && (
         <>
-          <button onClick={()=>{setIsLogin(false)}} className="p-3 rounded-full bg-white flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer" size={30}>
+          <button onClick={()=>{setIsLogin(false)}} className="p-3 rounded-full bg-gray-950  flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer" size={30}>
             <CgProfile className="text-blue-600" />
           </button>
-          <button onClick={()=>setOpen(true)}  aria-label="Open profile"  className="p-3 rounded-full bg-white flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer">
+          <button onClick={()=>setOpen(true)}  aria-label="Open profile"  className="p-3 rounded-full  bg-gray-950 flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer">
             <IoIosAddCircleOutline className="text-green-700" />
           </button>
-          <button onClick={()=>setShowTask(!showTask)} className="p-3 rounded-full lg:hidden bg-white flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer">
-            <IoLibrary className="text-green-600" />
+          <button onClick={()=>setShowTask(!showTask)} className="p-3  rounded-full lg:hidden bg-gray-950  flex items-center justify-center shadow-md hover:bg-gray-100 cursor-pointer">
+            {
+              showTask ? <GiTomato className="text-green-600" /> :<IoLibrary className="text-green-600" />
+            }
           </button>
         </>
       )}
